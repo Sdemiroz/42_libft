@@ -1,0 +1,50 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sdemiroz <sdemiroz@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/10/08 21:05:43 by sdemiroz          #+#    #+#              #
+#    Updated: 2024/10/08 21:06:50 by sdemiroz         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+.SILENT:
+
+NAME = libft.a
+
+SRCS = ft_isalpha.c ft_isdigit.c ft_isalpha.c ft_isascii.c ft_isprint.c \
+    	ft_strlen.c ft_isalnum.c
+
+OBJS = $(SRCS:.c=.o)
+
+BONUS =
+
+BONUS_OBJS = $(BONUS:.c=.o)
+
+CC = cc
+CFLAGS =  -Wall -Wextra -Werror
+ARFLAGS = -rcs
+RM = rm -rf
+
+all: $(NAME)
+
+$(NAME): $(OBJS) $(BONUS_OBJS)
+		ar $(ARFLAGS) $(NAME) $(OBJS) $(BONUS)
+
+%.o: %.c
+		$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+		$(RM) $(OBJS) $(BONUS_OBJS)
+
+fclean: clean
+			$(RM) $(NAME) *.o
+
+re: fclean all
+
+bonus: $(OBJS) $(BONUS_OBJS)
+			ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+
+.PHONY: all, clean, fclean, re, bonus
