@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdemiroz <sdemiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/08 20:42:48 by sdemiroz          #+#    #+#             */
-/*   Updated: 2024/10/10 17:03:14 by sdemiroz         ###   ########.fr       */
+/*   Created: 2024/10/10 17:49:40 by sdemiroz          #+#    #+#             */
+/*   Updated: 2024/10/10 18:12:53 by sdemiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(char *s)
+char	*ft_strchr(const char *s, int c)
 {
-	int	l;
-
-	l = 0;
-	while (s[l] != '\0')
-		l++;
-	return (l);
+	while (*s != '\0')
+	{
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
+	}
+	if ((char)c == '\0')
+		return ((char *)s);
+	return (0);
 }
-
-// int	main(void)
+// int main(void)
 // {
-// 	char	*str;
+// char	*o;
+// char	t;
 
-// 	str = "was geht!?";
-// 	printf("%d \n", ft_strlen(str));
-// 	return (0);
+// o = "ABCDEF";
+// t = 'B';
+// printf("%d", ft_strchr(o, t));
+// return (0);
 // }

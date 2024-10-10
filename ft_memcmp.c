@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdemiroz <sdemiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/08 20:42:48 by sdemiroz          #+#    #+#             */
-/*   Updated: 2024/10/10 17:03:14 by sdemiroz         ###   ########.fr       */
+/*   Created: 2024/10/10 19:10:15 by sdemiroz          #+#    #+#             */
+/*   Updated: 2024/10/10 19:39:17 by sdemiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(char *s)
+int	ft_memcmp(const void *str1, const void *str2, size_t n)
 {
-	int	l;
+	const unsigned char	*x;
+	const unsigned char	*y;
 
-	l = 0;
-	while (s[l] != '\0')
-		l++;
-	return (l);
+	x = str1;
+	y = str2;
+	while (n-- > 0)
+	{
+		if (*x != *y)
+			return (*x - *y);
+		x++;
+		y++;
+	}
+	return (0);
 }
-
-// int	main(void)
-// {
-// 	char	*str;
-
-// 	str = "was geht!?";
-// 	printf("%d \n", ft_strlen(str));
-// 	return (0);
-// }

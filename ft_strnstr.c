@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdemiroz <sdemiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/08 20:42:48 by sdemiroz          #+#    #+#             */
-/*   Updated: 2024/10/10 17:03:14 by sdemiroz         ###   ########.fr       */
+/*   Created: 2024/10/10 19:40:05 by sdemiroz          #+#    #+#             */
+/*   Updated: 2024/10/10 19:53:22 by sdemiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(char *s)
+char	*ft_strnstr(const char *big, const char *small, size_t n)
 {
-	int	l;
+	size_t	len;
 
-	l = 0;
-	while (s[l] != '\0')
-		l++;
-	return (l);
+	len = 0;
+	while (small[len] != '\0')
+		len++;
+	if (*small == '\0')
+		return ((char *)small);
+	while (*big != '\0' && n >= len)
+	{
+		if (ft_strncmp(big, small, len) == 0)
+			return ((char *)big);
+		big ++;
+		len--;
+	}
+	return (0);
 }
-
-// int	main(void)
-// {
-// 	char	*str;
-
-// 	str = "was geht!?";
-// 	printf("%d \n", ft_strlen(str));
-// 	return (0);
-// }

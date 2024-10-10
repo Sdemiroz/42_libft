@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdemiroz <sdemiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/08 20:42:48 by sdemiroz          #+#    #+#             */
-/*   Updated: 2024/10/10 17:03:14 by sdemiroz         ###   ########.fr       */
+/*   Created: 2024/10/10 18:26:54 by sdemiroz          #+#    #+#             */
+/*   Updated: 2024/10/10 18:35:25 by sdemiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(char *s)
+char	*ft_strrchr(char *src, int c)
 {
-	int	l;
+	int	x;
 
-	l = 0;
-	while (s[l] != '\0')
-		l++;
-	return (l);
+	x = ft_strlen(src);
+	while (x >= 0)
+	{
+		if (src[x] == (char)c)
+			return ((char *)&src[x]);
+		x--;
+	}
+	return (0);
 }
-
-// int	main(void)
-// {
-// 	char	*str;
-
-// 	str = "was geht!?";
-// 	printf("%d \n", ft_strlen(str));
-// 	return (0);
-// }

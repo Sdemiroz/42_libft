@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdemiroz <sdemiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/08 20:42:48 by sdemiroz          #+#    #+#             */
-/*   Updated: 2024/10/10 17:03:14 by sdemiroz         ###   ########.fr       */
+/*   Created: 2024/10/10 16:26:35 by sdemiroz          #+#    #+#             */
+/*   Updated: 2024/10/10 17:32:48 by sdemiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(char *s)
+size_t	ft_strlcat(char *dest_str, char *src_str, size_t n)
 {
-	int	l;
+	size_t	dn;
+	size_t	sn;
+	size_t	x;
 
-	l = 0;
-	while (s[l] != '\0')
-		l++;
-	return (l);
+	dn = ft_strlen(dest_str);
+	sn = ft_strlen(src_str);
+	x = 0;
+	if (n <= dn)
+		return (n + sn);
+	while (src_str[x] != '\0' && (dn + x) < (n - 1))
+	{
+		dest_str[dn + x] = src_str[x];
+		x++;
+	}
+	dest_str[dn + x] = '\0';
+	return (dn + sn);
 }
-
-// int	main(void)
-// {
-// 	char	*str;
-
-// 	str = "was geht!?";
-// 	printf("%d \n", ft_strlen(str));
-// 	return (0);
-// }
