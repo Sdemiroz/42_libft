@@ -1,32 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdemiroz <sdemiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/10 19:40:05 by sdemiroz          #+#    #+#             */
-/*   Updated: 2024/10/10 20:12:07 by sdemiroz         ###   ########.fr       */
+/*   Created: 2024/10/11 20:17:48 by sdemiroz          #+#    #+#             */
+/*   Updated: 2024/10/11 21:07:15 by sdemiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *small, size_t n)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	len;
+	size_t	x;
+	size_t	y;
+	size_t	s_len;
+	char	*sub;
 
-	len = 0;
-	while (small[len] != '\0')
-		len++;
-	if (*small == '\0')
-		return ((char *)big);
-	while (*big != '\0' && n >= len)
+	x = 0;
+	y = start;
+	if (s == NULL)
+		return (NULL);
+	s_len = ft_strlen(s);
+	if (y >= s_len)
+		return (ft_strdup(""));
+	if (len > s_len - y)
+		len = s_len - y;
+	sub = (char *)malloc(len + 1);
+	if (sub == NULL)
+		return (NULL);
+	while (x < len && s[y] != '\0')
 	{
-		if (ft_strncmp(big, small, len) == 0)
-			return ((char *)big);
-		big ++;
-		n--;
+		sub[x] = s[y];
+		x++;
+		y++;
 	}
-	return (0);
+	sub[x] = '\0';
+	return (sub);
 }

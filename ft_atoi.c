@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdemiroz <sdemiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/10 19:40:05 by sdemiroz          #+#    #+#             */
-/*   Updated: 2024/10/10 20:12:07 by sdemiroz         ###   ########.fr       */
+/*   Created: 2024/10/11 19:19:32 by sdemiroz          #+#    #+#             */
+/*   Updated: 2024/10/11 19:43:49 by sdemiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *small, size_t n)
+int	ft_atoi(const char *str)
 {
-	size_t	len;
+	int	sign;
+	int	num;
+	int	x;
 
-	len = 0;
-	while (small[len] != '\0')
-		len++;
-	if (*small == '\0')
-		return ((char *)big);
-	while (*big != '\0' && n >= len)
+	sign = 1;
+	num = 0;
+	x = 0;
+	while (str[x] == ' ' || (str[x] >= '\t' && str[x] <= '\r'))
+		x++;
+	if (str[x] == '+' || str[x] == '-')
 	{
-		if (ft_strncmp(big, small, len) == 0)
-			return ((char *)big);
-		big ++;
-		n--;
+		if (str[x] == '-')
+			sign = -1;
+		x++;
 	}
-	return (0);
+	while (str[x] >= '0' && str[x] <= '9')
+	{
+		num = num * 10 + (str[x] - '0');
+		x++;
+	}
+	return (sign * num);
 }

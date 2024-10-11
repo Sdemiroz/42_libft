@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdemiroz <sdemiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/10 19:40:05 by sdemiroz          #+#    #+#             */
-/*   Updated: 2024/10/10 20:12:07 by sdemiroz         ###   ########.fr       */
+/*   Created: 2024/10/11 20:02:24 by sdemiroz          #+#    #+#             */
+/*   Updated: 2024/10/11 20:12:12 by sdemiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *small, size_t n)
+void	*ft_strdup(const char *str)
 {
 	size_t	len;
+	char	*dup;
 
-	len = 0;
-	while (small[len] != '\0')
-		len++;
-	if (*small == '\0')
-		return ((char *)big);
-	while (*big != '\0' && n >= len)
-	{
-		if (ft_strncmp(big, small, len) == 0)
-			return ((char *)big);
-		big ++;
-		n--;
-	}
-	return (0);
+	len = ft_strlen(str) + 1;
+	dup = (char *)malloc(len);
+	if (dup != NULL)
+		ft_memcpy(dup, str, len);
+	return (dup);
 }
