@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdemiroez <sdemiroez@student.42.fr>        +#+  +:+       +#+        */
+/*   By: sdemiroz <sdemiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 00:16:22 by sdemiroez         #+#    #+#             */
-/*   Updated: 2024/10/14 01:36:19 by sdemiroez        ###   ########.fr       */
+/*   Updated: 2024/10/15 12:57:34 by sdemiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static int	set_or_no(char c, const char *set)
 {
 	int	x;
-	x = 0;
 
+	x = 0;
 	while (set[x] != '\0')
 	{
 		if (c == set[x])
@@ -34,7 +34,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	start = 0;
 	end = ft_strlen(s1);
-
 	if (!s1 || !set)
 		return (NULL);
 	while (s1[start] && set_or_no(s1[start], set))
